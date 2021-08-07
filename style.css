@@ -1,0 +1,34 @@
+.calculadora{
+    padding: 20px;
+    width: 35%;
+    height: 150px;
+    margin-left: 100px;
+    background-color: rgb(85, 81, 81);
+    color: white;
+}
+
+.input{
+    margin: 10px;
+    background-color: rgb(121, 151, 160);
+    color: white;
+    border: none;
+    font-size: 20;
+}
+
+.output{
+    margin: 10px;
+    background-color: rgb(121, 151, 160);
+    color: white;
+    border: none;
+    font-size: 20;
+}
+
+.bt{
+    color: black;
+    background-color: rgb(121, 151, 160);
+    border: none;
+    margin-left: 180px;
+    padding: 5px 15px;
+    margin-top: 5px ;
+    margin-bottom: 25px;
+}
