@@ -1,5 +1,61 @@
-function calcular(){
-    let n1 = parseFloat(document.getElementsByTagName('input')[0].value);
-    let n2 = parseFloat(document.getElementsByTagName('input')[1].value);
-    document.getElementsByTagName('output')[0].innerText = n1 + n2;
+function mensagem() {
+    let nome = prompt("Qual o seu nome?");
+    alert(nome);
+}
+
+function calcular() {
+    
+    if (validaCampos()) {
+        let peso   = parseFloat(document.getElementById('peso').value);
+        let altura = parseFloat(document.getElementById('altura').value);
+        let resultadoImc = (peso / (altura * altura)) * 10000;   
+        document.getElementById('resultadoTexto').innerText = "\nResultado: " ;
+        document.getElementById('resultado').innerText = resultadoImc.toFixed(1);
+        classificaImc(); // chamada da função
+    } else {
+        document.getElementById('resultado').innerText =  'Valores incorretos';    
+    }
+    
+}
+
+function validaCampos() {
+    let peso   = parseFloat(document.getElementById('peso').value);
+    let altura = parseFloat(document.getElementById('altura').value);
+    if (isNaN(peso) || isNaN(altura)) {
+        return false;
+    }
+    return true;
+}
+
+function validaTamanhoInput() {
+    setTimeout(() => {
+        let campoInputPeso = document.getElementById('peso');
+        if (campoInputPeso.value.length > 3 ) {
+            document.getElementById('erroInputPeso').style.display = 'block';
+        } else {
+            console.log(campoInputPeso.value.length);
+            document.getElementById('erroInputPeso').style.display = 'none'  ; 
+        }        
+    }, 100);
+   
+    
+}
+
+function classificaImc() {
+    let resultado = parseFloat(document.getElementById('resultado').innerText);
+    const tagImg = document.getElementById('imgResultado');
+    console.log(resultado);
+    if (resultado <= 18.5) {
+        tagImg.src = "magreza.png"
+    } else if (resultado > 18.5 &&  resultado <= 24.9) {
+        tagImg.src = "normal.png"
+    } else if (resultado >= 25.0 &&  resultado < 29.9) {
+        tagImg.src = "sobrepeso.png"
+    } else if (resultado >= 30.0 &&  resultado < 34.9) {
+        tagImg.src = "grau1.png"
+    } else if (resultado >= 35.0 &&  resultado < 39.9) {
+        tagImg.src = "grau2.png"
+    } else {
+        tagImg.src = "grau3.png"
+    }
 }
